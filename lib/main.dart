@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Future.delayed(Duration(seconds: 3));
   runApp(EcommerceRoteApp());
 }
 
@@ -18,6 +20,7 @@ class EcommerceRoteApp extends StatelessWidget {
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp.router(
+          title: "Ecommerce",
           debugShowCheckedModeBanner: false,
           routerConfig: RouterGenerationConfig.goRouter,
         );

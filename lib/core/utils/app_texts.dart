@@ -16,4 +16,5 @@ class AppTexts {
   static const String whatDoYouSearchFor = "what do you search for?";
   static const String categories = "Categories";
   static const String viewAll = "view all";
+  static const String ecommerce = "E-commerce";
 }

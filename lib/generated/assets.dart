@@ -5,8 +5,10 @@ class Assets {
   static const String imagesAdvertisement1 = 'assets/images/advertisement1.png';
   static const String imagesAdvertisement2 = 'assets/images/advertisement2.png';
   static const String imagesAdvertisement3 = 'assets/images/advertisement3.png';
+  static const String imagesAndroid12Logo = 'assets/images/android_12_logo.png';
+  static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesRoute = 'assets/images/route.png';
-  static const String svgImageAcrivePerson = 'assets/svg_image/acrive_person.svg';
+  static const String svgImageActivePerson = 'assets/svg_image/active_person.svg';
   static const String svgImageActiveCategory = 'assets/svg_image/active_category.svg';
   static const String svgImageActiveFavorite = 'assets/svg_image/active_favorite.svg';
   static const String svgImageActiveHome = 'assets/svg_image/active_home.svg';

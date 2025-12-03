@@ -1,3 +1,5 @@
+import 'package:ecommerce_rote/core/utils/app_colors.dart';
+import 'package:ecommerce_rote/features/splash/presentation/view/widgets/splash_body.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -5,6 +7,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: AppColors.primaryColor,
+      body: SplashBody(),
+    );
   }
 }
