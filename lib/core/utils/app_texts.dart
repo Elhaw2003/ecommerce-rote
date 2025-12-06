@@ -1,5 +1,5 @@
 class AppTexts {
-  static const String welcomeBackToRoute = "Welcome Back To Route";
+  static const String helloWelcome = "Hello Welcome";
   static const String pleaseSignInWithYourMail = "Please sign in with your mail";
   static const String email = "Email";
   static const String enterYouEmail = "Enter your email";

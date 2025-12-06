@@ -1,7 +1,8 @@
 import 'package:ecommerce_rote/core/routes/app_routes.dart';
+import 'package:ecommerce_rote/features/auth/features/login/presentation/view/login_screen.dart';
+import 'package:ecommerce_rote/features/auth/features/register/presentation/view/register_screen.dart';
 import 'package:ecommerce_rote/features/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 class RouterGenerationConfig {
   static GoRouter goRouter = GoRouter(
@@ -10,7 +11,18 @@ class RouterGenerationConfig {
     routes: [
       GoRoute(
           path: AppRoutes.splashScreen,
+          name: AppRoutes.splashScreen,
           builder: (context, state) => SplashScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.loginScreen,
+          name: AppRoutes.loginScreen,
+          builder: (context, state) => LoginScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.registerScreen,
+          name: AppRoutes.registerScreen,
+          builder: (context, state) => RegisterScreen(),
       ),
     ]
   );
