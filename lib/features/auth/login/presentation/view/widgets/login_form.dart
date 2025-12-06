@@ -78,7 +78,7 @@ class _LoginFormState extends State<LoginForm> {
             child: CustomTextFormField(
               controller: passwordController,
               prefixIcon: Icons.lock_outline,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               cursorColor: AppColors.primaryColor,
               hintText: AppTexts.enterYourPassword,
               focusBorderColor: AppColors.whiteColor,
@@ -104,9 +104,7 @@ class _LoginFormState extends State<LoginForm> {
             child: CustomButtonWidget(
               title: AppTexts.login,
               buttonColor: AppColors.whiteColor,
-              onPressed: () {
-
-              },
+              onPressed: () {},
             ),
           ),
           SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 30)),

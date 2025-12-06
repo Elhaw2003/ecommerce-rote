@@ -4,11 +4,14 @@ class AppTexts {
   static const String email = "Email";
   static const String enterYouEmail = "Enter your email";
   static const String password = "Password";
+  static const String confirmPassword = "Confirm password";
   static const String enterYourPassword = "Enter your password";
+  static const String enterYourMobileNumber = "Enter your mobile number";
   static const String forgotPassword = "Forgot password?";
   static const String login = "Login";
   static const String createAccount = "Create Account";
   static const String dontHaveAnAccount = "Don’t have an account?";
+  static const String alreadyHaveAnAccount = "Already have an account...";
   static const String enterYourFullName = "Enter your full name";
   static const String fullName = "Full Name";
   static const String signUp = "Sign up";

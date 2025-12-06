@@ -3,6 +3,7 @@ import 'package:ecommerce_rote/core/widgets/custom_button_widget.dart';
 import 'package:ecommerce_rote/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_rote/features/auth/widgets/rich_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../../../core/utils/app_text_styles.dart';
 import '../../../../../../../core/utils/app_texts.dart';
 import '../../../../../../../core/widgets/custom_spacing_widget.dart';
@@ -16,8 +17,10 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,28 +35,50 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 50)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: Text(
-              AppTexts.helloWelcome,
-              style: AppTextStyles.whiteW600S24Poppins,
+              AppTexts.fullName,
+              style: AppTextStyles.whiteW500S18Poppins,
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 8)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
+          SliverToBoxAdapter(
+            child: CustomTextFormField(
+              controller: fullNameController,
+              prefixIcon: Icons.account_circle_outlined,
+              keyboardType: TextInputType.text,
+              cursorColor: AppColors.primaryColor,
+              hintText: AppTexts.enterYourFullName,
+              focusBorderColor: AppColors.whiteColor,
+            ),
+          ),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: Text(
-              AppTexts.pleaseSignInWithYourMail,
-              style: AppTextStyles.whiteW300S16Poppins,
+              AppTexts.mobileNumber,
+              style: AppTextStyles.whiteW500S18Poppins,
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 40)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
+          SliverToBoxAdapter(
+            child: CustomTextFormField(
+              controller: mobileController,
+              prefixIcon: Icons.phone_enabled_outlined,
+              keyboardType: TextInputType.number,
+              cursorColor: AppColors.primaryColor,
+              hintText: AppTexts.enterYourMobileNumber,
+              focusBorderColor: AppColors.whiteColor,
+            ),
+          ),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: Text(
               AppTexts.email,
               style: AppTextStyles.whiteW500S18Poppins,
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 24)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: CustomTextFormField(
               controller: emailController,
@@ -64,37 +89,40 @@ class _RegisterFormState extends State<RegisterForm> {
               focusBorderColor: AppColors.whiteColor,
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 32)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: Text(
               AppTexts.password,
               style: AppTextStyles.whiteW500S18Poppins,
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 24)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: CustomTextFormField(
               controller: passwordController,
               prefixIcon: Icons.lock_outline,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               cursorColor: AppColors.primaryColor,
               hintText: AppTexts.enterYourPassword,
               focusBorderColor: AppColors.whiteColor,
-              obscureText: !isVisible,
-              suffixIcon: isVisible ? Icons.visibility : Icons.visibility_off,
-              suffixOnPressed: () {
-                setState(() {
-                  isVisible = !isVisible;
-                });
-              },
             ),
           ),
-          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 16)),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
           SliverToBoxAdapter(
             child: Text(
-              AppTexts.forgotPassword,
-              style: AppTextStyles.whiteW400S18Poppins,
-              textAlign: TextAlign.end,
+              AppTexts.confirmPassword,
+              style: AppTextStyles.whiteW500S18Poppins,
+            ),
+          ),
+          SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 20)),
+          SliverToBoxAdapter(
+            child: CustomTextFormField(
+              controller: confirmPasswordController,
+              prefixIcon: Icons.lock_outline,
+              keyboardType: TextInputType.text,
+              cursorColor: AppColors.primaryColor,
+              hintText: AppTexts.confirmPassword,
+              focusBorderColor: AppColors.whiteColor,
             ),
           ),
           SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 56)),
@@ -103,7 +131,6 @@ class _RegisterFormState extends State<RegisterForm> {
               title: AppTexts.signUp,
               buttonColor: AppColors.whiteColor,
               onPressed: () {
-
               },
             ),
           ),
@@ -113,9 +140,11 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: RichTextWidget(
-                title: AppTexts.createAccount,
-                desc: AppTexts.dontHaveAnAccount,
-                onTap: () {},
+                title: AppTexts.login,
+                desc: AppTexts.alreadyHaveAnAccount,
+                onTap: () {
+                  context.pop();
+                },
               ),
             ),
           ),

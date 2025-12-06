@@ -39,40 +39,49 @@ class CustomTextFormField extends StatelessWidget {
   final Color? focusBorderColor;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: cursorColor,
-      keyboardType: keyboardType,
-      validator: validator,
-      autovalidateMode: AutovalidateMode.always,
-      controller: controller,
-      obscureText: obscureText ?? false,
-      obscuringCharacter: "*",
-      decoration: InputDecoration(
-        fillColor: AppColors.whiteColor,
-        prefixIcon: IconButton(
-          onPressed: prefixOnPressed,
-          icon: Icon(prefixIcon, color: AppColors.primaryColor),
-        ),
-        suffixIcon: IconButton(
-          onPressed: suffixOnPressed,
-          icon: Icon(suffixIcon, color: AppColors.primaryColor),
-        ),
-        hintText: hintText,
-        hintStyle: AppTextStyles.blackW300S18Poppins,
-        filled: true,
-        labelText: labelText,
-        labelStyle: AppTextStyles.blackW300S18Poppins,
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusError?.r ?? 15.r),
-          borderSide: BorderSide(color: AppColors.redColor)
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
-          borderSide: BorderSide(color: AppColors.whiteColor),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusFocus?.r ?? 15.r),
-          borderSide: BorderSide(color: focusBorderColor ?? AppColors.primaryColor),
+    return Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: AppColors.primaryColor, // highlight on text in formField
+          selectionHandleColor: AppColors.primaryColor
+        )
+      ),
+      child: TextFormField(
+        cursorOpacityAnimates: true,
+        cursorColor: cursorColor,
+        keyboardType: keyboardType,
+        validator: validator,
+        autovalidateMode: AutovalidateMode.always,
+        controller: controller,
+        obscureText: obscureText ?? false,
+        obscuringCharacter: "*",
+        decoration: InputDecoration(
+          fillColor: AppColors.whiteColor,
+          prefixIcon: IconButton(
+            onPressed: prefixOnPressed,
+            icon: Icon(prefixIcon, color: AppColors.primaryColor),
+          ),
+          suffixIcon: IconButton(
+            onPressed: suffixOnPressed,
+            icon: Icon(suffixIcon, color: AppColors.primaryColor),
+          ),
+          hintText: hintText,
+          hintStyle: AppTextStyles.blackW300S18Poppins,
+          filled: true,
+          labelText: labelText,
+          labelStyle: AppTextStyles.blackW300S18Poppins,
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radiusError?.r ?? 15.r),
+            borderSide: BorderSide(color: AppColors.redColor)
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
+            borderSide: BorderSide(color: AppColors.whiteColor),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radiusFocus?.r ?? 15.r),
+            borderSide: BorderSide(color: focusBorderColor ?? AppColors.primaryColor),
+          ),
         ),
       ),
     );
