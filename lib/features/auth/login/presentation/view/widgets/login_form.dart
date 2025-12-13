@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../../../core/utils/app_text_styles.dart';
 import '../../../../../../../core/utils/app_texts.dart';
 import '../../../../../../../core/widgets/custom_spacing_widget.dart';
+import '../../../../../../core/utils/toast_bar.dart';
 import '../../../../../../core/validators/validators.dart';
 
 class LoginForm extends StatefulWidget {
@@ -28,10 +29,10 @@ class _LoginFormState extends State<LoginForm> {
     return BlocConsumer<LoginCubit, LoginState>(
   listener: (context, state) {
     if(state is LoginFailureState){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message),backgroundColor: AppColors.redColor,));
+      toastBar(msg: state.message,backgroundColor: AppColors.redColor);
     }
     else  if(state is LoginSuccessState){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppTexts.loginSuccessfully,style: AppTextStyles.whiteW500S18Poppins,),backgroundColor: AppColors.greenColor,));
+      toastBar(msg: AppTexts.loginSuccessfully,backgroundColor: AppColors.greenColor);
     }
   },
   builder: (context, state) {

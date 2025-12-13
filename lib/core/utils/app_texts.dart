@@ -22,4 +22,5 @@ class AppTexts {
   static const String ecommerce = "E-commerce";
   static const String noInterNet = "No Internet..please check your internet";
   static const String loginSuccessfully = "Login Successfully...";
+  static const String registerSuccessfully = "Register Successfully...";
 }
