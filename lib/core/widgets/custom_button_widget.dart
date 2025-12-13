@@ -7,8 +7,6 @@ class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
     super.key,
     this.onPressed,
-    required this.title,
-    this.titleStyle,
     this.prefixIcon,
     this.suffixIcon,
     this.buttonColor,
@@ -16,11 +14,9 @@ class CustomButtonWidget extends StatelessWidget {
     this.borderColor,
     this.overlayColor,
     this.prefixIconColor,
-    this.suffixIconColor,
+    this.suffixIconColor, required this.widget,
   });
   final void Function()? onPressed;
-  final String title;
-  final TextStyle? titleStyle;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final Color? prefixIconColor;
@@ -29,6 +25,7 @@ class CustomButtonWidget extends StatelessWidget {
   final double? radiusButton;
   final Color? borderColor;
   final Color? overlayColor;
+  final Widget widget;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -55,7 +52,7 @@ class CustomButtonWidget extends StatelessWidget {
               ? Icon(prefixIcon, color: prefixIconColor ?? AppColors.whiteColor, size: 24.sp)
               : SizedBox(),
           Expanded(
-            child: Text(title, style: titleStyle ?? AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
+            child: widget,
           ),
           suffixIcon != null
               ? Icon(suffixIcon, color: suffixIconColor ?? AppColors.whiteColor, size: 24.sp)

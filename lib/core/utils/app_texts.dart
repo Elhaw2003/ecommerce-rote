@@ -20,4 +20,6 @@ class AppTexts {
   static const String categories = "Categories";
   static const String viewAll = "view all";
   static const String ecommerce = "E-commerce";
+  static const String noInterNet = "No Internet..please check your internet";
+  static const String loginSuccessfully = "Login Successfully...";
 }

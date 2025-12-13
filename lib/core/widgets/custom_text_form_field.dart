@@ -51,7 +51,7 @@ class CustomTextFormField extends StatelessWidget {
         cursorColor: cursorColor,
         keyboardType: keyboardType,
         validator: validator,
-        autovalidateMode: AutovalidateMode.always,
+        // autovalidateMode: AutovalidateMode.,
         controller: controller,
         obscureText: obscureText ?? false,
         obscuringCharacter: "*",
@@ -77,6 +77,10 @@ class CustomTextFormField extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
             borderSide: BorderSide(color: AppColors.whiteColor),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
+            borderSide: BorderSide(color: AppColors.redColor),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radiusFocus?.r ?? 15.r),

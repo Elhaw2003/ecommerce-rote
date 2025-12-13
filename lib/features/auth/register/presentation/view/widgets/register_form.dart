@@ -128,7 +128,7 @@ class _RegisterFormState extends State<RegisterForm> {
           SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 56)),
           SliverToBoxAdapter(
             child: CustomButtonWidget(
-              title: AppTexts.signUp,
+              widget: Text(AppTexts.signUp, style:  AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
               buttonColor: AppColors.whiteColor,
               onPressed: () {
               },

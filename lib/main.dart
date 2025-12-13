@@ -1,10 +1,16 @@
+import 'package:bloc/bloc.dart';
 import 'package:ecommerce_rote/core/routes/router_generation_config.dart';
+import 'package:ecommerce_rote/core/services/manage_cubit_servise.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
+import 'core/di/di.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   // await Future.delayed(Duration(seconds: 3));
+  Bloc.observer =MyBlocObserver();
+  configureDependencies();
   runApp(EcommerceRoteApp());
 }
 
