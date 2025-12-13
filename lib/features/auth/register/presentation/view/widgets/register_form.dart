@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../../../core/utils/app_text_styles.dart';
 import '../../../../../../../core/utils/app_texts.dart';
 import '../../../../../../../core/widgets/custom_spacing_widget.dart';
+import '../../../../../../core/widgets/custom_loading_widget.dart';
 import '../../../cubit/register_cubit.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -168,7 +169,7 @@ class _RegisterFormState extends State<RegisterForm> {
               SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 56)),
               SliverToBoxAdapter(
                 child: CustomButtonWidget(
-                  widget: state is RegisterLoadingState ?Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)):Text(AppTexts.login, style: AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
+                  widget: state is RegisterLoadingState ?CustomLoadingWidget(strokeWidth: 2.5,height: 25,width: 25,):Text(AppTexts.login, style: AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
                   buttonColor: state is RegisterLoadingState ? AppColors.greyColor.withOpacity(0.7) :AppColors.whiteColor,
                   onPressed: () {
                     if(formKey.currentState!.validate()){

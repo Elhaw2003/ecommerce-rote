@@ -29,4 +29,10 @@ class AuthRepositoriesImpl implements AuthRepository{
     });
   }
 
+  @override
+  Future<Either<Failure, String>> forgotPassword({required String email}) async{
+    var response = await authRemoteDataSource.forgotPassword(email: email);
+    return response.fold((l){return Left(l);}, (r){return Right(r);});
+  }
+
 }

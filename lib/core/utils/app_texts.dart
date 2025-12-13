@@ -23,4 +23,5 @@ class AppTexts {
   static const String noInterNet = "No Internet..please check your internet";
   static const String loginSuccessfully = "Login Successfully...";
   static const String registerSuccessfully = "Register Successfully...";
+  static const String verifyYourEmail = "Verify Your Email";
 }

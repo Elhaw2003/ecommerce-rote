@@ -1,4 +1,5 @@
 import 'package:ecommerce_rote/core/routes/app_routes.dart';
+import 'package:ecommerce_rote/features/auth/forgot_password/presentation/view/forgot_password_screen.dart';
 import 'package:ecommerce_rote/features/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,6 +24,11 @@ class RouterGenerationConfig {
           path: AppRoutes.registerScreen,
           name: AppRoutes.registerScreen,
           builder: (context, state) => RegisterScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.forgotPasswordScreen,
+          name: AppRoutes.forgotPasswordScreen,
+          builder: (context, state) => ForgotPasswordScreen(),
       ),
     ]
   );

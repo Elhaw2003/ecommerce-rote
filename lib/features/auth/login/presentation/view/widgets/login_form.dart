@@ -12,6 +12,7 @@ import '../../../../../../../core/utils/app_texts.dart';
 import '../../../../../../../core/widgets/custom_spacing_widget.dart';
 import '../../../../../../core/utils/toast_bar.dart';
 import '../../../../../../core/validators/validators.dart';
+import '../../../../../../core/widgets/custom_loading_widget.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -113,16 +114,22 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 16)),
           SliverToBoxAdapter(
-            child: Text(
-              AppTexts.forgotPassword,
-              style: AppTextStyles.whiteW400S18Poppins,
-              textAlign: TextAlign.end,
+            child: TextButton(
+              style: ButtonStyle(alignment: Alignment.centerRight),
+              child: Text(
+                AppTexts.forgotPassword,
+                style: AppTextStyles.whiteW400S18Poppins,
+                textAlign: TextAlign.end,
+              ),
+              onPressed: (){
+                GoRouter.of(context).pushNamed(AppRoutes.forgotPasswordScreen);
+              },
             ),
           ),
           SliverToBoxAdapter(child: CustomHeightSpacingWidget(height: 56)),
           SliverToBoxAdapter(
             child: CustomButtonWidget(
-              widget: state is LoginLoadingState ?Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)):Text(AppTexts.login, style: AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
+              widget: state is LoginLoadingState ?CustomLoadingWidget(strokeWidth: 2.5,height: 25,width: 25,):Text(AppTexts.login, style: AppTextStyles.primaryW600S20Poppins, textAlign: TextAlign.center),
               buttonColor: state is LoginLoadingState ? AppColors.greyColor.withOpacity(0.7) :AppColors.whiteColor,
               onPressed: () {
                 if(formKey.currentState!.validate()){
