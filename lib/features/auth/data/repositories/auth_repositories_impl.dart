@@ -35,4 +35,10 @@ class AuthRepositoriesImpl implements AuthRepository{
     return response.fold((l){return Left(l);}, (r){return Right(r);});
   }
 
+  @override
+  Future<Either<Failure, String>> verifyOtp({required String resetCode}) async{
+   var response = await authRemoteDataSource.verifyOtp(resetCode: resetCode);
+   return response.fold((l){return Left(l);}, (r){return Right(r);});
+  }
+
 }

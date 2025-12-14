@@ -38,6 +38,12 @@ class MyValidators {
 
     return null;
   }
+  static String? verifyOtpValidator(String? value) {
+    if (value!.length <6 ) {
+      return AppTexts.fillThisField;
+    }
+    return null;
+  }
 
   static String? passwordValidator(String? value) {
     if (value!.isEmpty) {
@@ -50,13 +56,13 @@ class MyValidators {
   }
   static String? addedCategoryValidator(String? value) {
     if (value!.isEmpty) {
-      return "AppTexts.fillThisField";
+      return AppTexts.fillThisField;
     }
     return null;
   }
   static String? addedNoteValidator(String? value) {
     if (value!.isEmpty) {
-      return "AppTexts.fillThisField";
+      return AppTexts.fillThisField;
     }
     return null;
   }

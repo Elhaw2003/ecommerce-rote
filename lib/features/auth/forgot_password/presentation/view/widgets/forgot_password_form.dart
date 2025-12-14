@@ -1,8 +1,10 @@
+import 'package:ecommerce_rote/core/routes/app_routes.dart';
 import 'package:ecommerce_rote/core/utils/toast_bar.dart';
 import 'package:ecommerce_rote/core/widgets/custom_loading_widget.dart';
 import 'package:ecommerce_rote/features/auth/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/app_text_styles.dart';
@@ -31,7 +33,8 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           toastBar(msg: state.message,backgroundColor: AppColors.redColor);
         }
         else if(state is ForgotPasswordSuccessState){
-          toastBar(msg: state.success,backgroundColor: AppColors.greenColor);
+          toastBar(msg: state.successMessage,backgroundColor: AppColors.greenColor);
+          GoRouter.of(context).pushNamed(AppRoutes.verifyOtpScreen);
         }
       },
       builder: (context, state) {
@@ -63,8 +66,9 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                     textAlign: TextAlign.center),
                 buttonColor: state is ForgotPasswordLoadingState ? AppColors.greyColor.withOpacity(0.7) :AppColors.whiteColor,
                 onPressed: () {
-                  if(formKey.currentState!.validate()){
-                    BlocProvider.of<ForgotPasswordCubit>(context).login(email: emailController.text.trim());
+                  if(formKey.currentState!.validate()) {
+                    BlocProvider.of<ForgotPasswordCubit>(context)
+                        .forgotPassword(email: emailController.text.trim());
                   }
                 },
               ),

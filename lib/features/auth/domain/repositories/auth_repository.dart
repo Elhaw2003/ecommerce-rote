@@ -7,4 +7,5 @@ abstract class AuthRepository {
   Future<Either<Failure,LoginResponseEntity>> login({required String email,required String password});
   Future<Either<Failure,RegisterResponseEntity>> register({required String email,required String password,required String name,required String rePassword,required String phone});
   Future<Either<Failure,String>> forgotPassword({required String email,});
+  Future<Either<Failure,String>> verifyOtp({required String resetCode,});
 }

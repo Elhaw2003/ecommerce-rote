@@ -15,6 +15,7 @@ abstract class AuthRemoteDataSource{
   Future<Either<Failure,LoginResponseEntity>> login({required String email,required String password});
   Future<Either<Failure,RegisterResponseEntity>> register({required String email,required String password,required String name,required String rePassword,required String phone});
   Future<Either<Failure,String>> forgotPassword({required String email});
+  Future<Either<Failure,String>> verifyOtp({required String resetCode});
 }
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
@@ -133,6 +134,39 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
     }
     catch(e){
       print("=== ${e.toString()}");
+      return Left(ApiFailure(message: "UnExpected Error"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> verifyOtp({required String resetCode}) async{
+    try{
+      var checkConnectivity = Connectivity().checkConnectivity();
+      if(checkConnectivity == ConnectivityResult.none){
+        return Left(NetworkFailure(message: AppTexts.noInterNet));
+      }
+      var response = await apiManager.post(AppEndPoints.baseUrl + AppEndPoints.verifyOtp,
+      data: {
+        "resetCode":resetCode
+      }
+      );
+      if (response.statusCode! >=200 && response.statusCode! <300){
+        return Right(response.data["status"]);
+      }
+      else{
+        return Left(ApiFailure(message: response.data["message"]));
+      }
+    }on DioException catch(e){
+      if(e.type == DioExceptionType.unknown || e.type == DioExceptionType.connectionError){
+        return Left(NetworkFailure(message: AppTexts.noInterNet));
+      }
+      return Left(
+          ApiFailure(
+            message: e.response?.data["message"] ?? "Something went wrong",
+          )
+      );
+
+    } catch(e){
       return Left(ApiFailure(message: "UnExpected Error"));
     }
   }

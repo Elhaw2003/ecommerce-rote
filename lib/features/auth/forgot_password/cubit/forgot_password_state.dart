@@ -6,9 +6,9 @@ sealed class ForgotPasswordState {}
 final class ForgotPasswordInitialState extends ForgotPasswordState {}
 final class ForgotPasswordLoadingState extends ForgotPasswordState {}
 final class ForgotPasswordSuccessState extends ForgotPasswordState {
-  final String success;
+  final String successMessage;
 
-  ForgotPasswordSuccessState({required this.success});
+  ForgotPasswordSuccessState({required this.successMessage});
 }
 final class ForgotPasswordFailureState extends ForgotPasswordState {
   final String message;

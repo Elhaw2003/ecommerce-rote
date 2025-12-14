@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/login/presentation/view/login_screen.dart';
 import '../../features/auth/register/presentation/view/register_screen.dart';
+import '../../features/auth/verify_otp/presentation/view/verify_otp_screen.dart';
 class RouterGenerationConfig {
   static GoRouter goRouter = GoRouter(
     initialLocation:AppRoutes.splashScreen,
@@ -29,6 +30,11 @@ class RouterGenerationConfig {
           path: AppRoutes.forgotPasswordScreen,
           name: AppRoutes.forgotPasswordScreen,
           builder: (context, state) => ForgotPasswordScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.verifyOtpScreen,
+          name: AppRoutes.verifyOtpScreen,
+          builder: (context, state) => VerifyOtpScreen(),
       ),
     ]
   );
