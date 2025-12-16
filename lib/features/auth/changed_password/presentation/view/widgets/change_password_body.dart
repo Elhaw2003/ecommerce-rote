@@ -1,9 +1,10 @@
-import 'package:ecommerce_rote/features/auth/verify_otp/presentation/view/widgets/verify_otp_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class VerifyOtpBody extends StatelessWidget {
-  const VerifyOtpBody({super.key, required this.email});
+import 'change_password_form.dart';
+
+class ChangePasswordBody extends StatelessWidget {
+  const ChangePasswordBody({super.key, required this.email});
   final String email;
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class VerifyOtpBody extends StatelessWidget {
           left: 16.w,
           bottom: 50.h
       ),
-      child: VerifyOtpForm(email: email,),
+      child: ChangePasswordForm(email: email,),
     );
   }
 }

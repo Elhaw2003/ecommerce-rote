@@ -24,7 +24,9 @@ class AppTexts {
   static const String loginSuccessfully = "Login Successfully...";
   static const String registerSuccessfully = "Register Successfully...";
   static const String verifyYourEmail = "Verify Your Email";
+  static const String changePassword = "Change Your Password";
   static const String verifyYourOtp = "Verify Your Otp";
+  static const String resetCode = "Reset Code";
   static const String fillThisField = "Fill This Field";
   static const String verificationSuccessfully = "Verification Successfully...";
 }

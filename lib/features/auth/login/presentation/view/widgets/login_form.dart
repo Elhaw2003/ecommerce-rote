@@ -26,6 +26,12 @@ class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isVisible = false;
   @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
   listener: (context, state) {

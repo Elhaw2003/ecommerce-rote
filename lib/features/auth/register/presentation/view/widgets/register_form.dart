@@ -28,6 +28,15 @@ class _RegisterFormState extends State<RegisterForm> {
       TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+    fullNameController.dispose();
+    mobileController.dispose();
+    confirmPasswordController.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
@@ -160,7 +169,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   focusBorderColor: AppColors.whiteColor,
                   validator: (v){
                     return MyValidators.repeatPasswordValidator(
-                      value: v,
+                      value: v!,
                       password: passwordController.text.trim()
                     );
                   },

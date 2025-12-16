@@ -41,4 +41,10 @@ class AuthRepositoriesImpl implements AuthRepository{
    return response.fold((l){return Left(l);}, (r){return Right(r);});
   }
 
+  @override
+  Future<Either<Failure, String>> changePassword({required String email, required String newPassword}) async{
+    var response = await authRemoteDataSource.changedPassword(email: email, newPassword: newPassword);
+    return response.fold((l){return Left(l);}, (r){return Right(r);});
+  }
+
 }

@@ -1,4 +1,5 @@
 import 'package:ecommerce_rote/core/routes/app_routes.dart';
+import 'package:ecommerce_rote/features/auth/changed_password/presentation/view/changed_password_screen.dart';
 import 'package:ecommerce_rote/features/auth/forgot_password/presentation/view/forgot_password_screen.dart';
 import 'package:ecommerce_rote/features/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,17 @@ class RouterGenerationConfig {
       GoRoute(
           path: AppRoutes.verifyOtpScreen,
           name: AppRoutes.verifyOtpScreen,
-          builder: (context, state) => VerifyOtpScreen(),
+          builder: (context, state) {
+            final String email = state.extra as String;
+            return VerifyOtpScreen(email: email,);},
+      ),
+      GoRoute(
+          path: AppRoutes.changePasswordScreen,
+          name: AppRoutes.changePasswordScreen,
+          builder: (context, state) {
+            final String email = state.extra as String;
+            return ChangePasswordScreen(email: email);
+            },
       ),
     ]
   );

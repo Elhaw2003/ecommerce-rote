@@ -34,7 +34,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
         }
         else if(state is ForgotPasswordSuccessState){
           toastBar(msg: state.successMessage,backgroundColor: AppColors.greenColor);
-          GoRouter.of(context).pushNamed(AppRoutes.verifyOtpScreen);
+          GoRouter.of(context).pushNamed(AppRoutes.verifyOtpScreen,extra: emailController.text.trim());
         }
       },
       builder: (context, state) {

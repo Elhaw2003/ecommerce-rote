@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -16,6 +18,7 @@ abstract class AuthRemoteDataSource{
   Future<Either<Failure,RegisterResponseEntity>> register({required String email,required String password,required String name,required String rePassword,required String phone});
   Future<Either<Failure,String>> forgotPassword({required String email});
   Future<Either<Failure,String>> verifyOtp({required String resetCode});
+  Future<Either<Failure,String>> changedPassword({required String email,required String newPassword});
 }
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
@@ -152,6 +155,40 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
       );
       if (response.statusCode! >=200 && response.statusCode! <300){
         return Right(response.data["status"]);
+      }
+      else{
+        return Left(ApiFailure(message: response.data["message"]));
+      }
+    }on DioException catch(e){
+      if(e.type == DioExceptionType.unknown || e.type == DioExceptionType.connectionError){
+        return Left(NetworkFailure(message: AppTexts.noInterNet));
+      }
+      return Left(
+          ApiFailure(
+            message: e.response?.data["message"] ?? "Something went wrong",
+          )
+      );
+
+    } catch(e){
+      return Left(ApiFailure(message: "UnExpected Error"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> changedPassword({required String email, required String newPassword}) async{
+    try{
+      var checkConnectivity = Connectivity().checkConnectivity();
+      if(checkConnectivity == ConnectivityResult.none){
+        return Left(NetworkFailure(message: AppTexts.noInterNet));
+      }
+      var response = await apiManager.put(AppEndPoints.baseUrl + AppEndPoints.changePassword,
+          data: {
+            "email":email,
+            "newPassword": newPassword
+          }
+      );
+      if (response.statusCode! >=200 && response.statusCode! <300){
+        return Right("Changed Password Successfully...");
       }
       else{
         return Left(ApiFailure(message: response.data["message"]));

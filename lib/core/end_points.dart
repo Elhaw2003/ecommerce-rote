@@ -4,4 +4,5 @@ class AppEndPoints{
   static const String register = "/auth/signup";
   static const String forgotPassword = "/auth/forgotPasswords";
   static const String verifyOtp = "/auth/verifyResetCode";
+  static const String changePassword = "/auth/resetPassword";
 }

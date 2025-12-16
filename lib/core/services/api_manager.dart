@@ -18,5 +18,17 @@ class ApiManager {
       )
     );
   }
+  Future<Response> put (String path , {Map<String , dynamic>? data, Map<String , dynamic>? queryParameters})async{
+   return await dio.put(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: Options(
+        validateStatus: (status){
+          return true;
+        }
+      )
+    );
+  }
 
 }
