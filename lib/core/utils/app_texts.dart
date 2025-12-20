@@ -4,6 +4,7 @@ class AppTexts {
   static const String email = "Email";
   static const String enterYouEmail = "Enter your email";
   static const String password = "Password";
+  static const String newPassword = "New Password";
   static const String confirmPassword = "Confirm password";
   static const String enterYourPassword = "Enter your password";
   static const String enterYourMobileNumber = "Enter your mobile number";

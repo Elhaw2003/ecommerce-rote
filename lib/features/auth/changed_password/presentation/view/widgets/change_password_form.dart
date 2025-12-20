@@ -31,6 +31,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
     // TODO: implement dispose
     newPasswordController.dispose();
     confirmPasswordController.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppTexts.password,
+                  AppTexts.newPassword,
                   style: AppTextStyles.whiteW500S18Poppins,
                 ),
                 CustomHeightSpacingWidget(height: 10),

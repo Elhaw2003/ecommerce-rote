@@ -30,6 +30,7 @@ class _LoginFormState extends State<LoginForm> {
     // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
