@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -32,7 +30,7 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
         return Left(NetworkFailure(message: AppTexts.noInterNet));
       }
       var response = await apiManager.post(
-        AppEndPoints.baseUrl + AppEndPoints.login,
+        AppEndPoints.login,
         data: {
           "email": email,
           "password": password
@@ -70,7 +68,7 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
         return Left(NetworkFailure(message: AppTexts.noInterNet));
       }
       var response = await apiManager.post(
-        AppEndPoints.baseUrl + AppEndPoints.register,
+        AppEndPoints.register,
         data: {
           "email": email,
           "password": password,
@@ -111,7 +109,7 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
         return Left(NetworkFailure(message: AppTexts.noInterNet));
       }
       var response = await apiManager.post(
-        AppEndPoints.baseUrl + AppEndPoints.forgotPassword,
+        AppEndPoints.forgotPassword,
         data: {
           "email": email,
         },
@@ -140,7 +138,6 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
       return Left(ApiFailure(message: "UnExpected Error"));
     }
   }
-
   @override
   Future<Either<Failure, String>> verifyOtp({required String resetCode}) async{
     try{
@@ -148,7 +145,7 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
       if(checkConnectivity == ConnectivityResult.none){
         return Left(NetworkFailure(message: AppTexts.noInterNet));
       }
-      var response = await apiManager.post(AppEndPoints.baseUrl + AppEndPoints.verifyOtp,
+      var response = await apiManager.post(AppEndPoints.verifyOtp,
       data: {
         "resetCode":resetCode
       }
@@ -173,7 +170,6 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
       return Left(ApiFailure(message: "UnExpected Error"));
     }
   }
-
   @override
   Future<Either<Failure, String>> changedPassword({required String email, required String newPassword}) async{
     try{
@@ -181,7 +177,7 @@ class AuthRemoteDatsSourceImpl implements AuthRemoteDataSource {
       if(checkConnectivity == ConnectivityResult.none){
         return Left(NetworkFailure(message: AppTexts.noInterNet));
       }
-      var response = await apiManager.put(AppEndPoints.baseUrl + AppEndPoints.changePassword,
+      var response = await apiManager.put(AppEndPoints.changePassword,
           data: {
             "email":email,
             "newPassword": newPassword

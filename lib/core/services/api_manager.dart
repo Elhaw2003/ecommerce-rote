@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ecommerce_rote/core/end_points.dart';
 import 'package:injectable/injectable.dart';
 @singleton
 class ApiManager {
@@ -6,9 +7,11 @@ class ApiManager {
 
   ApiManager({required this.dio});
 
-  Future<Response> post (String path , {Map<String , dynamic>? data, Map<String , dynamic>? queryParameters})async{
+  Future<Response> post (
+      String path ,
+      {Map<String , dynamic>? data, Map<String , dynamic>? queryParameters})async{
    return await dio.post(
-      path,
+      AppEndPoints.baseUrl+path,
       data: data,
       queryParameters: queryParameters,
       options: Options(
@@ -20,7 +23,7 @@ class ApiManager {
   }
   Future<Response> put (String path , {Map<String , dynamic>? data, Map<String , dynamic>? queryParameters})async{
    return await dio.put(
-      path,
+       AppEndPoints.baseUrl+path,
       data: data,
       queryParameters: queryParameters,
       options: Options(

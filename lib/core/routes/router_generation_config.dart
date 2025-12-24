@@ -1,6 +1,7 @@
 import 'package:ecommerce_rote/core/routes/app_routes.dart';
 import 'package:ecommerce_rote/features/auth/changed_password/presentation/view/changed_password_screen.dart';
 import 'package:ecommerce_rote/features/auth/forgot_password/presentation/view/forgot_password_screen.dart';
+import 'package:ecommerce_rote/features/main/presentation/view/main_screen.dart';
 import 'package:ecommerce_rote/features/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,7 +10,7 @@ import '../../features/auth/register/presentation/view/register_screen.dart';
 import '../../features/auth/verify_otp/presentation/view/verify_otp_screen.dart';
 class RouterGenerationConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation:AppRoutes.splashScreen,
+    initialLocation:AppRoutes.mainScreen,
     errorBuilder: (context, state) => errorScreen(),
     routes: [
       GoRoute(
@@ -26,6 +27,11 @@ class RouterGenerationConfig {
           path: AppRoutes.registerScreen,
           name: AppRoutes.registerScreen,
           builder: (context, state) => RegisterScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.mainScreen,
+          name: AppRoutes.mainScreen,
+          builder: (context, state) => MainScreen(),
       ),
       GoRoute(
           path: AppRoutes.forgotPasswordScreen,

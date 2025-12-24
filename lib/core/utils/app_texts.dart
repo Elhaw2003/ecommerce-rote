@@ -2,6 +2,9 @@ class AppTexts {
   static const String helloWelcome = "Hello Welcome";
   static const String pleaseSignInWithYourMail = "Please sign in with your mail";
   static const String email = "Email";
+  static const String home = "Home";
+  static const String favorite = "Favorite";
+  static const String profile = "Profile";
   static const String enterYouEmail = "Enter your email";
   static const String password = "Password";
   static const String newPassword = "New Password";
