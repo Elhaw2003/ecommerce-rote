@@ -20,7 +20,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixOnPressed,
     this.keyboardType,
     this.cursorColor,
-    this.focusBorderColor,
+    this.focusBorderColor, this.enabledBorderColor, this.hintStyle,
   });
   final TextEditingController controller;
   final bool? obscureText;
@@ -37,6 +37,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? cursorColor;
   final Color? focusBorderColor;
+  final Color? enabledBorderColor;
+  final TextStyle? hintStyle;
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -59,14 +61,14 @@ class CustomTextFormField extends StatelessWidget {
           fillColor: AppColors.whiteColor,
           prefixIcon: IconButton(
             onPressed: prefixOnPressed,
-            icon: Icon(prefixIcon, color: AppColors.primaryColor),
+            icon: Icon(prefixIcon,size: 24.sp, color: AppColors.primaryColor),
           ),
           suffixIcon: IconButton(
             onPressed: suffixOnPressed,
-            icon: Icon(suffixIcon, color: AppColors.primaryColor),
+            icon: Icon(suffixIcon, size: 24.sp,color: AppColors.primaryColor),
           ),
           hintText: hintText,
-          hintStyle: AppTextStyles.blackW300S18Poppins,
+          hintStyle: hintStyle??AppTextStyles.blackW300S18Poppins,
           filled: true,
           labelText: labelText,
           labelStyle: AppTextStyles.blackW300S18Poppins,
@@ -76,10 +78,10 @@ class CustomTextFormField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
-            borderSide: BorderSide(color: AppColors.whiteColor),
+            borderSide: BorderSide(color: enabledBorderColor??AppColors.whiteColor),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radiusEnabled?.r ?? 15.r),
+            borderRadius: BorderRadius.circular(radiusError?.r ?? 15.r),
             borderSide: BorderSide(color: AppColors.redColor),
           ),
           focusedBorder: OutlineInputBorder(

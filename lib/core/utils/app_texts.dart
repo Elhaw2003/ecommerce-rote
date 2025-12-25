@@ -5,6 +5,7 @@ class AppTexts {
   static const String home = "Home";
   static const String favorite = "Favorite";
   static const String profile = "Profile";
+  static const String cart = "Cart";
   static const String enterYouEmail = "Enter your email";
   static const String password = "Password";
   static const String newPassword = "New Password";

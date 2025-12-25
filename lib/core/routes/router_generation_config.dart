@@ -1,6 +1,7 @@
 import 'package:ecommerce_rote/core/routes/app_routes.dart';
 import 'package:ecommerce_rote/features/auth/changed_password/presentation/view/changed_password_screen.dart';
 import 'package:ecommerce_rote/features/auth/forgot_password/presentation/view/forgot_password_screen.dart';
+import 'package:ecommerce_rote/features/home/presentation/view/home_screen.dart';
 import 'package:ecommerce_rote/features/main/presentation/view/main_screen.dart';
 import 'package:ecommerce_rote/features/splash/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,11 @@ class RouterGenerationConfig {
           path: AppRoutes.mainScreen,
           name: AppRoutes.mainScreen,
           builder: (context, state) => MainScreen(),
+      ),
+      GoRoute(
+          path: AppRoutes.homeScreen,
+          name: AppRoutes.homeScreen,
+          builder: (context, state) => HomeScreen(),
       ),
       GoRoute(
           path: AppRoutes.forgotPasswordScreen,

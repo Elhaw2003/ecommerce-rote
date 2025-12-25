@@ -57,6 +57,11 @@ class AppTextStyles {
   static  TextStyle blackW300S18Poppins = GoogleFonts.poppins(
     fontWeight: FontWeight.w300,
     fontSize: 18.sp,
-    color: AppColors.blackColor.withOpacity(.7)
+    color: AppColors.blackColor.withOpacity(.6)
+  );
+  static  TextStyle blackW300S14Poppins = GoogleFonts.poppins(
+    fontWeight: FontWeight.w300,
+    fontSize: 14.sp,
+    color: AppColors.blackColor.withOpacity(.6)
   );
 }

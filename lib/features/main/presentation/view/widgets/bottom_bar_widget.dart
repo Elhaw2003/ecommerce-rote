@@ -53,9 +53,9 @@ class BottomBarWidget extends StatelessWidget {
       duration: Duration(microseconds: 300),
       curve: Curves.easeOutCirc,
       child: CircleAvatar(
-        radius: 23.sp,
+        radius: 20.sp,
         backgroundColor: AppColors.whiteColor,
-        child: CustomSvgWidget(icon:icon, height: 20, width: 20),
+        child: CustomSvgWidget(icon:icon, height: 18, width: 18),
       ),
     );
   }
